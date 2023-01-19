@@ -13,6 +13,7 @@ function CustomerInformation() {
     const history = useHistory();
 
     const submitOrder = () => {
+        if (customerName && customerAddress && customerCity && customerZip && orderType) {
         dispatch({
             type: 'SUBMIT_CUSTOMER_INFO',
             payload: {
@@ -24,6 +25,9 @@ function CustomerInformation() {
             }
         })
         history.push('/checkout');
+        } else {
+            alert('Please fill in all fields before moving on to checkout');
+        }
     };
 
     const handleSubmit = (event) => {
