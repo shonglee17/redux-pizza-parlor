@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App/App';
+import App from './components/App';
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux'
 import logger from 'redux-logger';
-const listOfPizzas = (state=[{}], action) =>{
+
+const listOfPizzas = (state=[], action) =>{
     if(action.type === 'GET_PIZZA'){
         let newPizzaArray = [...state];
         for(let pay of action.payload){
@@ -27,9 +28,31 @@ const listOfPizzas = (state=[{}], action) =>{
     }
     return state;
 }
+
+const newOrder = (state=[], action) => {
+  if (action.type === 'SUBMIT_CUSTOMER_INFO') {
+    for (let pay of action.payload) {
+      let newOrderName = pay.customer_name;
+      let newOrderAddress = pay.street_address;
+      let newOrderCity = pay.city;
+      let newOrderZip = pay.zip;
+      let newOrderType = pay.type;
+      let newOrderObject = {
+        customer_name: newOrderName,
+        street_address: newOrderAddress,
+        city: newOrderCity,
+        zip: newOrderZip,
+        type: newOrderType
+      }
+      return newOrderObject;
+    };
+  }
+  return state;
+}
 const store = createStore(
     combineReducers({
-        listOfPizzas
+        listOfPizzas,
+        newOrder
     }),
     applyMiddleware(
         logger
