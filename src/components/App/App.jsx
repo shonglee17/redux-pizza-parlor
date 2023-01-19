@@ -35,13 +35,13 @@ function App() {
             </header>
             <Router>
                 <br/>
-                <Route exact path='/'>
+                <Route exact path='/dsgd'>
                   <SelectPizza />
                 </Route>
                 <Route exact path='/customer'>
                   <CustomerInformation />
                 </Route>
-                <Route exact path='/checkout'>
+                <Route exact path='/'>
                   <Checkout />
                 </Route>
                 <Route exact path='/admin'>
