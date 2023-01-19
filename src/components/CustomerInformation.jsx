@@ -8,14 +8,14 @@ function CustomerInformation() {
     const [customerAddress, setCustomerAddress] = useState('');
     const [customerCity, setCustomerCity] = useState('');
     const [customerZip, setCustomerZip] = useState('');
-    const [isDelivery, setIsDelivery] = useState('false');
+    const [isDelivery, setIsDelivery] = useState(false);
 
     const dispatch = useDispatch();
     const history = useHistory();
 
     const submitOrder = () => {
         let orderType = 'pickup';
-        if (isDelivery === 'true') {
+        if (isDelivery === true) {
             orderType = 'delivery';
         }
         dispatch({
@@ -33,11 +33,7 @@ function CustomerInformation() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (customerName!='' && customerAddress!='' && customerCity!='' && customerZip!='' && isDelivery!='') {
-            submitOrder();
-        } else {
-            alert('Please fill out all sections before continuing!')
-        };
+        submitOrder();
     };
 
     return(
@@ -71,8 +67,8 @@ function CustomerInformation() {
             <label>
                 <input
                     type="radio"
-                    value={'pickup'}
-                    checked={isDelivery === 'false'}
+                    value={false}
+                    checked={isDelivery === false}
                     name="order_type"
                     onChange={(evt) => setIsDelivery(evt.target.value)}
                 />
@@ -81,8 +77,8 @@ function CustomerInformation() {
             <label>
                 <input
                     type="radio"
-                    value={'delivery'}
-                    checked={isDelivery === 'true'}
+                    value={true}
+                    checked={isDelivery === true}
                     name="order_type"
                     onChange={(evt) => setIsDelivery(evt.target.value)}
                 />

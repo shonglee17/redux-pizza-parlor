@@ -31,23 +31,21 @@ const listOfPizzas = (state=[], action) =>{
 
 const newOrder = (state=[], action) => {
   if (action.type === 'SUBMIT_CUSTOMER_INFO') {
-    for (let pay of action.payload) {
-      let newOrderName = pay.customer_name;
-      let newOrderAddress = pay.street_address;
-      let newOrderCity = pay.city;
-      let newOrderZip = pay.zip;
-      let newOrderType = pay.type;
-      let newOrderObject = {
-        customer_name: newOrderName,
-        street_address: newOrderAddress,
-        city: newOrderCity,
-        zip: newOrderZip,
-        type: newOrderType
-      }
-      console.log(newOrderObject);
-      return newOrderObject;
-    };
-  }
+    let newOrderName = action.payload.customer_name;
+    let newOrderAddress = action.payload.street_address;
+    let newOrderCity = action.payload.city;
+    let newOrderZip = action.payload.zip;
+    let newOrderType = action.payload.type;
+    let newOrderObject = {
+      customer_name: newOrderName,
+      street_address: newOrderAddress,
+      city: newOrderCity,
+      zip: newOrderZip,
+      type: newOrderType
+    }
+    console.log(newOrderObject);
+    return newOrderObject;
+  };
   return state;
 }
 const store = createStore(
