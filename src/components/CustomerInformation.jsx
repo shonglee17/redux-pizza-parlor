@@ -13,7 +13,7 @@ function CustomerInformation() {
     const history = useHistory();
 
     const submitOrder = () => {
-        if (customerName && customerAddress && customerCity && customerZip && orderType) {
+        if (customerName!='' && customerAddress!='' && customerCity!='' && customerZip!='' && orderType!='') {
         dispatch({
             type: 'SUBMIT_CUSTOMER_INFO',
             payload: {
