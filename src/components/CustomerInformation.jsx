@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useHistory } from 'react-redux'
+
 function CustomerInformation() {
 
     const [customerName, setCustomerName] = useState('');
@@ -12,23 +13,17 @@ function CustomerInformation() {
     const history = useHistory();
 
     const submitOrder = () => {
-        axios.post('/api/order', {
-            customer_name: customerName,
-            street_address: customerAddress,
-            city: customerCity,
-            zip: customerZip,
-            type: orderType
-            // total,
-            // pizzas,
-        }).then(response => {
-            dispatch({
-                type: 'SUBMIT_ORDER',
-                payload: response.data
-            })
-            history.push('/checkout');
-        }).catch(error => {
-            console.error('Error in CustomerInformation submitOrder POST:', error);
-        });
+        dispatch({
+            type: 'SUBMIT_CUSTOMER_INFO',
+            payload: {
+                customer_name: customerName,
+                street_address: customerAddress,
+                city: customerCity,
+                zip: customerZip,
+                type: orderType
+            }
+        })
+        history.push('/checkout');
     };
 
     const handleSubmit = (event) => {
@@ -75,8 +70,8 @@ function CustomerInformation() {
                 name="order_type"
                 onChange={(evt) => setOrderType(evt.target.value)}
             />
+            <button type="submit">Next</button>
         </form>
-        <button onClick>Next</button>
         </>
     )
 }
