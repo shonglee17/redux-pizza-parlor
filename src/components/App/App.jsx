@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import './App.css';
-import SelectPizza from './SelectPizza';
-import CustomerInformation from './CustomerInformation';
-import Checkout from './Checkout';
-import Admin from './Admin'
+import SelectPizza from '../SelectPizza';
+import CustomerInformation from '../CustomerInformation';
+import Checkout from '../Checkout';
+import Admin from '../Admin'
 
 function App() {
   const dispatch = useDispatch();

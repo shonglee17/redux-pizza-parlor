@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
+import App from './components/App/App';
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux'
 import logger from 'redux-logger';
@@ -44,6 +44,7 @@ const newOrder = (state=[], action) => {
         zip: newOrderZip,
         type: newOrderType
       }
+      console.log(newOrderObject);
       return newOrderObject;
     };
   }

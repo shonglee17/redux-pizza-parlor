@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useDispatch, useHistory } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 function CustomerInformation() {
 
@@ -7,13 +8,16 @@ function CustomerInformation() {
     const [customerAddress, setCustomerAddress] = useState('');
     const [customerCity, setCustomerCity] = useState('');
     const [customerZip, setCustomerZip] = useState('');
-    const [orderType, setOrderType] = useState('delivery');
+    const [isDelivery, setIsDelivery] = useState('false');
 
     const dispatch = useDispatch();
     const history = useHistory();
 
     const submitOrder = () => {
-        if (customerName!='' && customerAddress!='' && customerCity!='' && customerZip!='' && orderType!='') {
+        let orderType = 'pickup';
+        if (isDelivery === 'true') {
+            orderType = 'delivery';
+        }
         dispatch({
             type: 'SUBMIT_CUSTOMER_INFO',
             payload: {
@@ -25,14 +29,11 @@ function CustomerInformation() {
             }
         })
         history.push('/checkout');
-        } else {
-            alert('Please fill in all fields before moving on to checkout');
-        }
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (customerName && customerAddress && customerCity && customerZip && orderType) {
+        if (customerName!='' && customerAddress!='' && customerCity!='' && customerZip!='' && isDelivery!='') {
             submitOrder();
         } else {
             alert('Please fill out all sections before continuing!')
@@ -44,36 +45,49 @@ function CustomerInformation() {
         <h2>Step 2: Customer Information</h2>
         <form onSubmit={handleSubmit}>
             <input
-                type="text"
                 value={customerName}
+                placeholder="Name"
+                type="text"
                 onChange={(event) => setCustomerName(event.target.value)}
             />
             <input
                 value={customerAddress}
+                placeholder="Street Address"
+                type="text"
                 onChange={(event) => setCustomerAddress(event.target.value)}
             />
             <input 
                 value={customerCity}
+                placeholder="City"
+                type="text"
                 onChange={(event) => setCustomerCity(event.target.value)}
             />
             <input
                 value={customerZip}
+                placeholder="Zipcode"
+                type="text"
                 onChange={(event) => setCustomerZip(event.target.value)}
             />
-            <input
-                type="radio"
-                value={'pickup'}
-                checked={orderType === 'pickup'}
-                name="order_type"
-                onChange={(evt) => setOrderType(evt.target.value)}
-            />
-            <input
-                type="radio"
-                value={'delivery'}
-                checked={orderType === 'delivery'}
-                name="order_type"
-                onChange={(evt) => setOrderType(evt.target.value)}
-            />
+            <label>
+                <input
+                    type="radio"
+                    value={'pickup'}
+                    checked={isDelivery === 'false'}
+                    name="order_type"
+                    onChange={(evt) => setIsDelivery(evt.target.value)}
+                />
+                Pickup
+            </label>
+            <label>
+                <input
+                    type="radio"
+                    value={'delivery'}
+                    checked={isDelivery === 'true'}
+                    name="order_type"
+                    onChange={(evt) => setIsDelivery(evt.target.value)}
+                />
+                Delivery
+            </label>
             <button type="submit">Next</button>
         </form>
         </>
