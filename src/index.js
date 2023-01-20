@@ -84,6 +84,7 @@ const store = createStore(
     combineReducers({
         listOfPizzas,
         selectPizzas,
+        newOrder
     }),
     applyMiddleware(
         logger

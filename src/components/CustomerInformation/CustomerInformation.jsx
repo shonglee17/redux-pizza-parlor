@@ -4,21 +4,19 @@ import { useHistory } from 'react-router-dom'
 
 function CustomerInformation() {
 
+    let history = useHistory();
+
     const [customerName, setCustomerName] = useState('');
     const [customerAddress, setCustomerAddress] = useState('');
     const [customerCity, setCustomerCity] = useState('');
     const [customerZip, setCustomerZip] = useState('');
-    const [isDelivery, setIsDelivery] = useState(false);
+    const [isDelivery, setIsDelivery] = useState('');
 
     const dispatch = useDispatch();
     // const history = useHistory();
 
 
     const submitOrder = () => {
-        let orderType = 'pickup';
-        if (isDelivery === true) {
-            orderType = 'delivery';
-        }
         dispatch({
             type: 'SUBMIT_CUSTOMER_INFO',
             payload: {
@@ -26,7 +24,7 @@ function CustomerInformation() {
                 street_address: customerAddress,
                 city: customerCity,
                 zip: customerZip,
-                type: orderType
+                type: isDelivery
             }
         })
         history.push('/checkout');
@@ -68,8 +66,7 @@ function CustomerInformation() {
             <label>
                 <input
                     type="radio"
-                    value={false}
-                    checked={isDelivery === false}
+                    value={'pickup'}
                     name="order_type"
                     onChange={(evt) => setIsDelivery(evt.target.value)}
                 />
@@ -78,8 +75,7 @@ function CustomerInformation() {
             <label>
                 <input
                     type="radio"
-                    value={true}
-                    checked={isDelivery === true}
+                    value={'delivery'}
                     name="order_type"
                     onChange={(evt) => setIsDelivery(evt.target.value)}
                 />
