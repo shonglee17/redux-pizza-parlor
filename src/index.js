@@ -69,6 +69,14 @@ const selectPizzas = (state=[], action) =>{
         
         return newPizzaArray;
     }
+    if(action.type === 'REMOVE_PIZZA'){
+      for (let check of state){
+        if (check.id === action.payload.id){
+          state.splice(check)
+          console.log(state);
+        }
+      }
+    }
     return state;
 }
 
