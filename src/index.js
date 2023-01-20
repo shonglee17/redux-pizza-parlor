@@ -72,8 +72,9 @@ const selectPizzas = (state=[], action) =>{
     if(action.type === 'REMOVE_PIZZA'){
       for (let check of state){
         if (check.id === action.payload.id){
-          state.splice(check)
-          console.log(state);
+
+          pizzas.splice(check, 1)
+          return pizzas;
         }
       }
     }
