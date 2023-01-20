@@ -11,7 +11,8 @@ function CustomerInformation() {
     const [isDelivery, setIsDelivery] = useState(false);
 
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
+
 
     const submitOrder = () => {
         let orderType = 'pickup';

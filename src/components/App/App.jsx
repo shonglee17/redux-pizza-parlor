@@ -2,11 +2,13 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import './App.css';
-import SelectPizza from '../SelectPizza';
-import CustomerInformation from '../CustomerInformation';
-import Checkout from '../Checkout';
-import Admin from '../Admin'
+
+import './App/App.css';
+import SelectPizza from '../SelectPizza/SelectPizza';
+import CustomerInformation from '../CustomerInformation/CustomerInformation';
+import Checkout from '../Checkout/Checkout';
+import Admin from '../Admin/Admin'
+
 
 function App() {
   const dispatch = useDispatch();
