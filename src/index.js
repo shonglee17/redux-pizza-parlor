@@ -70,13 +70,13 @@ const selectPizzas = (state=[], action) =>{
         return newPizzaArray;
     }
     if(action.type === 'REMOVE_PIZZA'){
-      for (let check of state){
-        if (check.id === action.payload.id){
-
-          pizzas.splice(check, 1)
-          return pizzas;
+        let filteredArray = [];
+        for (let check of state){
+            if (check.id !== action.payload.id){
+                filteredArray.push(check);
+            }
         }
-      }
+        return filteredArray;
     }
     return state;
 }
