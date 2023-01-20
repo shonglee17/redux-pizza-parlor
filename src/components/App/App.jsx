@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 
-import './App/App.css';
+import './App.css';
 import SelectPizza from '../SelectPizza/SelectPizza';
 import CustomerInformation from '../CustomerInformation/CustomerInformation';
 import Checkout from '../Checkout/Checkout';
