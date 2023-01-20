@@ -10,21 +10,21 @@ function CustomerInformation() {
     const [orderType, setOrderType] = useState('delivery');
 
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
 
-    const submitOrder = () => {
-        dispatch({
-            type: 'SUBMIT_CUSTOMER_INFO',
-            payload: {
-                customer_name: customerName,
-                street_address: customerAddress,
-                city: customerCity,
-                zip: customerZip,
-                type: orderType
-            }
-        })
-        history.push('/checkout');
-    };
+    // const submitOrder = () => {
+    //     dispatch({
+    //         type: 'SUBMIT_CUSTOMER_INFO',
+    //         payload: {
+    //             customer_name: customerName,
+    //             street_address: customerAddress,
+    //             city: customerCity,
+    //             zip: customerZip,
+    //             type: orderType
+    //         }
+    //     })
+    //     history.push('/checkout');
+    // };
 
     const handleSubmit = (event) => {
         event.preventDefault();

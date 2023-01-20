@@ -13,3 +13,9 @@
 .App-title {
   font-size: 2em;
 }
+
+.boxes{
+  outline: 1px solid;
+  border: 1px;
+}
+

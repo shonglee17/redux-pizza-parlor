@@ -5,6 +5,7 @@ import App from './components/App';
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux'
 import logger from 'redux-logger';
+
 const listOfPizzas = (state=[], action) =>{
     if(action.type === 'GET_PIZZA'){
         let newPizzaArray = [...state];
@@ -30,10 +31,30 @@ const listOfPizzas = (state=[], action) =>{
     return state;
 }
 
+const selectPizzas = (state=[], action) =>{
+    if(action.type === 'SELECT_PIZZA'){
+        
+            
+            let newPizzaId = action.payload.id;
+            let newPizzaName = action.payload.name;
+            let newPizzaPrice = action.payload.price;
+            let newPizzaObject = {
+                id: newPizzaId,
+                name: newPizzaName,
+                price: newPizzaPrice,
+            }
+            let newPizzaArray = [...state];
+            newPizzaArray.push(newPizzaObject)
+        
+        return newPizzaArray;
+    }
+    return state;
+}
+
 const store = createStore(
     combineReducers({
         listOfPizzas,
-        newOrder
+        selectPizzas,
     }),
     applyMiddleware(
         logger
