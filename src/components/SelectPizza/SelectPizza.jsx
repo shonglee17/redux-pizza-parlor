@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { useDispatch , useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory, HashRouter as Router, Link } from 'react-router-dom';
 import SelectPizzaItem from './SelectPizzaItem'
 function SelectPizza(){

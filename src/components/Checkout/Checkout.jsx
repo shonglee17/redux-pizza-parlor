@@ -1,6 +1,7 @@
 import './Checkout.css';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+
 function Checkout(){
     const handleClicks = () =>{
         handleCheckout()
@@ -18,6 +19,9 @@ function Checkout(){
           })
      
     }
+
+
+
     const history = useHistory();
     return(
         <>
