@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
+import App from './components/App/App';
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux'
 import logger from 'redux-logger';
@@ -29,6 +29,27 @@ const listOfPizzas = (state=[], action) =>{
         return newPizzaArray;
     }
     return state;
+}
+
+
+const newOrder = (state=[], action) => {
+  if (action.type === 'SUBMIT_CUSTOMER_INFO') {
+    let newOrderName = action.payload.customer_name;
+    let newOrderAddress = action.payload.street_address;
+    let newOrderCity = action.payload.city;
+    let newOrderZip = action.payload.zip;
+    let newOrderType = action.payload.type;
+    let newOrderObject = {
+      customer_name: newOrderName,
+      street_address: newOrderAddress,
+      city: newOrderCity,
+      zip: newOrderZip,
+      type: newOrderType
+    }
+    console.log(newOrderObject);
+    return newOrderObject;
+  };
+  return state;
 }
 
 const selectPizzas = (state=[], action) =>{
