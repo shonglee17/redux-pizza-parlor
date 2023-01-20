@@ -32,7 +32,7 @@ const listOfPizzas = (state=[], action) =>{
 }
 
 
-const newOrder = (state=[], action) => {
+const newOrder = (state={}, action) => {
   if (action.type === 'SUBMIT_CUSTOMER_INFO') {
     let newOrderName = action.payload.customer_name;
     let newOrderAddress = action.payload.street_address;
@@ -76,6 +76,7 @@ const store = createStore(
     combineReducers({
         listOfPizzas,
         selectPizzas,
+        newOrder
     }),
     applyMiddleware(
         logger

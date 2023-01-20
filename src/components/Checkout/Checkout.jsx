@@ -1,10 +1,15 @@
 import './Checkout.css';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 function Checkout(){
+    let pizza = useSelector((store) => store.selectPizzas)
+    let order = useSelector((store) => store.newOrder)
+    console.log(pizza);
+    console.log(order);
     const handleClicks = () =>{
         handleCheckout()
-        history.push('/dsgd')
+        history.push('/')
     }
     const handleCheckout = () =>{
         axios({
