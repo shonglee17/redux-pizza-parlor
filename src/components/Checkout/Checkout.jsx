@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 function Checkout(){
     useEffect(() => {totals()},[]);
     let pizza = useSelector((store) => store.selectPizzas)
@@ -52,6 +53,9 @@ function Checkout(){
           })
      
     }
+
+
+
     const history = useHistory();
     return(
         <>
